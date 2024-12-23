@@ -155,11 +155,6 @@ docker run -d \
   lscr.io/linuxserver/faster-whisper:latest
 ```
 
-Nvidia GPU example:
-
-```
-
-
 
 ## Parameters
 
