@@ -107,6 +107,37 @@ services:
     restart: unless-stopped
 ```
 
+
+### docker-compose nvidia GPU example
+
+```yaml
+---
+services:
+  faster-whisper:
+    image: lscr.io/linuxserver/faster-whisper:latest
+    container_name: faster-whisper
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WHISPER_MODEL=tiny-int8
+      - WHISPER_BEAM=1 #optional
+      - WHISPER_LANG=en #optional
+    volumes:
+      - /path/to/faster-whisper/data:/config
+    ports:
+      - 10300:10300
+    restart: unless-stopped
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+```
+
 ### docker cli ([click here for more info](https://docs.docker.com/engine/reference/commandline/cli/))
 
 ```bash
@@ -123,6 +154,12 @@ docker run -d \
   --restart unless-stopped \
   lscr.io/linuxserver/faster-whisper:latest
 ```
+
+Nvidia GPU example:
+
+```
+
+
 
 ## Parameters
 
