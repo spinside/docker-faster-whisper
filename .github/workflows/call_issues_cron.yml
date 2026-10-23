@@ -6,6 +6,7 @@ on:
 
 jobs:
   stale:
+    if: github.repository_owner == 'linuxserver'  # lsio-infra: fork lacks the org secrets this workflow needs; only meaningful in the upstream org
     permissions:
       issues: write
       pull-requests: write

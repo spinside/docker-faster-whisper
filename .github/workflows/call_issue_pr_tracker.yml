@@ -10,6 +10,7 @@ on:
 
 jobs:
   manage-project:
+    if: github.repository_owner == 'linuxserver'  # lsio-infra: fork lacks the org secrets this workflow needs; only meaningful in the upstream org
     permissions:
       issues: write
     uses: linuxserver/github-workflows/.github/workflows/issue-pr-tracker.yml@v1
